@@ -1,2 +1,7 @@
 # android-archive
-projects
+
+- Shopping List PJ
+  - MVVM(LiveData, ViewModel, Repository)
+  - RoomDB
+  - Kodein(DI)
+  - simple RV based layout
