@@ -89,4 +89,4 @@ lint/tmp/
 
 # custom
 .idea
-gradle/wrapper
+gradle/wrapper/
