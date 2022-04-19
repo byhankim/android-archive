@@ -90,3 +90,4 @@ lint/tmp/
 # custom
 .idea
 gradle/wrapper/
+SecretConstants.kt
