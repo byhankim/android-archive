@@ -13,9 +13,9 @@ import com.bumptech.glide.Glide
 
 class NewsAdpater : RecyclerView.Adapter<NewsAdpater.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private lateinit var binding: ItemArticlePreviewBinding
+//    private lateinit var binding: ItemArticlePreviewBinding
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
@@ -33,22 +33,35 @@ class NewsAdpater : RecyclerView.Adapter<NewsAdpater.ArticleViewHolder>() {
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        binding = ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ArticleViewHolder(binding.root)
+        val rootView = ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+//        binding = ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ArticleViewHolder(rootView)
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
-        binding.apply {
-            Glide.with().load(article.urlToImage).into(ivArticleImage)
+        holder.binding.apply {
+            Glide.with(holder.binding.ivArticleImage.context).load(article.urlToImage)
+                .into(ivArticleImage)
             tvSource.text = article.source.name
             tvTitle.text = article.title
             tvDescription.text = article.description
             tvPublishedAt.text = article.publishedAt
+
+            root.setOnClickListener {
+                onItemClickListener?.let { it(article) }
+            }
+
         }
     }
+        
 
     private var onItemClickListener: ((Article) -> Unit)? = null
+
+    fun setonItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun getItemCount() = differ.currentList.size
 
