@@ -91,3 +91,4 @@ lint/tmp/
 .idea
 gradle/wrapper/
 SecretConstants.kt
+key_strings.xml
