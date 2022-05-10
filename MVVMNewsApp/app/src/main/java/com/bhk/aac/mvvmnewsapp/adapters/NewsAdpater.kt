@@ -11,7 +11,7 @@ import com.bhk.aac.mvvmnewsapp.databinding.ItemArticlePreviewBinding
 import com.bhk.aac.mvvmnewsapp.models.Article
 import com.bumptech.glide.Glide
 
-class NewsAdpater : RecyclerView.Adapter<NewsAdpater.ArticleViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -50,7 +50,7 @@ class NewsAdpater : RecyclerView.Adapter<NewsAdpater.ArticleViewHolder>() {
             tvPublishedAt.text = article.publishedAt
 
             root.setOnClickListener {
-                onItemClickListener?.let { it(article) }
+                onItemClickListener?.let { it(article) } // it: itemclicklistener & calls lambda function
             }
 
         }

@@ -18,7 +18,7 @@ abstract class ArticleDatabase : RoomDatabase() {
     companion object {
         // instance of db
 
-        @Volatile // other threads can check when a thread changes this instance
+        @Volatile // other threads  can check when a thread changes this instance
         private var instance: ArticleDatabase? = null
         private val LOCK = Any() // synchronize the instance
 
