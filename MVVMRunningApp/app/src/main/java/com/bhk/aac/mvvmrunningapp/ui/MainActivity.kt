@@ -1,4 +1,4 @@
-package com.bhk.aac.mvvmrunningapp
+package com.bhk.aac.mvvmrunningapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
