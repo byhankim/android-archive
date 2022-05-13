@@ -5,10 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bhk.aac.mvvmrunningapp.databinding.FragmentRunBinding
 import com.bhk.aac.mvvmrunningapp.databinding.FragmentStatisticsBinding
+import com.bhk.aac.mvvmrunningapp.ui.viewmodels.MainViewModel
+import com.bhk.aac.mvvmrunningapp.ui.viewmodels.StatisticsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StatisticsFragment: Fragment() {
+
+    private val viewModel: StatisticsViewModel by viewModels()
 
     private var _binding: FragmentStatisticsBinding? = null
     val binding get() = _binding!!
