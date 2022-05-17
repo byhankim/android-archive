@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.bhk.aac.mvvmrunningapp.R
 import com.bhk.aac.mvvmrunningapp.databinding.FragmentRunBinding
 import com.bhk.aac.mvvmrunningapp.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +30,12 @@ class RunFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        with (binding) {
+            fab.setOnClickListener {
+                findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
+            }
+        }
     }
 
     override fun onDestroy() {
